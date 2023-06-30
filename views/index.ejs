@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Projects</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/css/style.css">
+
+    <title>MakerZip :: Portfolio</title>
 </head>
 <body>
-  <h1>My Projects</h1>
-  <% for (const data of datas) { %>
-    <div class="data">
-      <h2><%= data.title %></h2>
-      <img src="<%= data.imageUrl %>" alt="<%= data.title %>">
-      <p><%= data.description %></p>
-      <a href="<%= data.url %>">View project</a>
-    </div>
-  <% } %>
+    <div class="main">
+      <h1>Portfolio</h1>
+    <% for (const data of datas) { %>
+      <div class="data">
+        <h2><%= data.title %></h2>
+        <img src="<%= data.image %>" alt="<%= data.title %>">
+        <p><%= data.description %></p>
+        <a href="<%= data.url %>">View project</a>
+      </div>
+    <% } %>
+
+    
+  </div>
+  <div class="copyright">
+      <a href="<%= footer.url %>"><%= footer.copyright %></a>
+  </div>
 </body>
 </html>
