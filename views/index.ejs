@@ -3,17 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
+  <title>My Projects</title>
 </head>
 <body>
-  <h1>My Portfolio</h1>
-  <p>This is my portfolio page.</p>
-  <p>Here are some of my projects:</p>
-  <% for (const project of projects) { %>
-    <div>
-      <h2><%= project.title %></h2>
-      <p><%= project.description %></p>
-      <a href="<%= project.url %>">View project</a>
+  <h1>My Projects</h1>
+  <% for (const data of datas) { %>
+    <div class="data">
+      <h2><%= data.title %></h2>
+      <img src="<%= data.imageUrl %>" alt="<%= data.title %>">
+      <p><%= data.description %></p>
+      <a href="<%= data.url %>">View project</a>
     </div>
   <% } %>
 </body>

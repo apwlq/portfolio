@@ -1,32 +1,25 @@
 const express = require('express');
-const ejs = require('ejs');
+// const ejs = require('ejs');
+const path = require('path');
+const fs = require('fs');
 
 const app = express();
+const port = "3000"
+const publicDir = path.join(__dirname, 'public');
+const dataDir = path.join(__dirname, 'data');
 
-// Define routes
-app.get('/', (req, res) => {
-  res.render('index.ejs');
-});
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+app.use(express.static(publicDir));
 
-app.get('/projects', (req, res) => {
-  // Get all projects from the database
-  const projects = [
-    {
-      title: 'My First Project',
-      description: 'This is my first project.',
-      url: 'https://myfirstproject.com',
-    },
-    {
-      title: 'My Second Project',
-      description: 'This is my second project.',
-      url: 'https://mysecondproject.com',
-    },
-  ];
+app.get('*', (req, res) => {
+    let data = JSON.parse(fs.readFileSync(`${dataDir}/data.json`, 'utf8'));
 
-  // Render the projects page
-  res.render('projects.ejs', { projects });
+    // Render the projects page
+    res.render('index.ejs', { datas });
 });
 
 // Start the server
-app.listen(3000);
-console.log('Server started on port 3000');
+app.listen(port, function (){
+    console.log('App listening on port ', port);
+});
